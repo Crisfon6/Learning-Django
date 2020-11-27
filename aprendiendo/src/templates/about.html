@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>aBout</h1>
+
+
+{{request.user}}
+{{ helloWorld|safe }}
+
+{{ helloWorld|striptags }}
+
+<p>contact</p>
+
+
+<p>
+    {{ cellphone}},
+
+
+</p>
+<p>
+    {{email}}
+</p>
+
+<ul>
+    {% for enterprise in enterprises %}
+
+        {% if enterprise == 365 %}
+            <li> {{forloop.counter}} . {{ enterprise|add:22 }}</li>
+        {% elif enterprise == "Crisfon6" %}
+            <li> {{forloop.counter}} . {{enterprise|add:" The best company"}}</li>
+        {% else %}
+            <li> {{forloop.counter}} . {{enterprise}}</li>
+        
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock content %}

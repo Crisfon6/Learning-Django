@@ -1,0 +1,47 @@
+ mkvirtualenv my_django_environment
+
+
+Hay sólo otros pocos comandos útiles que deberías conocer (hay más en la documentación de la herramienta, pero éstos son los que usarás de forma habitual:
+
+    deactivate — Salir del entorno virutal Python actual
+    workon — Listar los entornos virtuales disponibles
+    workon name_of_environment — Activar el entorno virtual Python especificado
+    rmvirtualenv name_of_environment — Borrar el entorno especificado.
+
+django-admin startproject mytestsite
+
+python3 manage.py runserver 
+
+
+La subcarpeta del proyecto locallibrary es el punto de entrada al sitio web: 
+
+    settings.py contiene todos los ajustes del sitio. Es donde registramos todas las aplicaciones que creamos, la localización de nuestros ficheros estáticos, los detalles de configuración de la base de datos, etc.
+    urls.py define los mapeos url-vistas. A pesar de que éste podría contener todo el código del mapeo url, es más común delegar algo del mapeo a las propias aplicaciones, como verás más tarde.
+    wsgi.py se usa para ayudar a la aplicación Django a comunicarse con el servidor web. Puedes tratarlo como código base que puedes utilizar de plantilla.
+
+El script manage.py se usa para crear aplicaciones, trabajar con bases de datos y empezar el desarrollo del servidor web.
+
+
+    Una carpeta migrations que se utiliza para guardar las "migraciones"— ficheros que te permiten actualizar tus bases de datos a medida que modificas tus modelos. 
+    __init__.py — Un fichero vacío creado aquí para que Django/Python reconozca la carpeta como un Paquete Python y te permita usar sus objetos dentro de otras partes del proyecto.
+
+
+
+    SECRET_KEY. Ésta es una clave secreta que se usa como parte de la estrategia de seguridad del sitio web de Django. Si no vas a proteger este código durante el desarrollo, necesitarás usar un código diferente (quizás leyendo de una variable de entorno o un fichero) cuando lo pongas en producción. 
+    DEBUG. Ésto habilita que los registros (logs) de depuración se muestren en caso de error, en vez de las respuestas con los códigos de estado HTTP. Éste debería ajustarse a false en producción, ya que la información de depuración es útil a los atacantes. 
+
+
+
+Cuando creamos el sitio web de Django añadimos automáticamente unos cuantos modelos para que ser usados por la sección de administración del sitio (al que echaremos un vistazo más tarde). Ejecuta los siguientes comandos para definir tablas para esos modelos de la base (asegúrate que estás en el directorio que contiene manage.py):
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+Importante: Necesitarás ejecutar los comandos de arriba cada vez que cambien tus modelos de una manera que afecte a la estructura de datos y necesite ser guardada (incluyendo tanto la adicción como la eliminación de modelos enteros o campos individuales).
+
+El comando makemigrations crea (pero no aplica) las migraciones para todas las aplicaciones instaladas en tu proyecto (también puedes especificar el nombre de una aplicación para ejecutar una migración para un sólo proyecto). Ésto te da la opoortunidad de comprobar el código para estas migraciones antes de que se apliquen — cuando seas un experto en Django ¡podrás elegir modificarlos ligeramente!
+
+El comando migrate aplica realmente las migraciones a tu base de datos (Django lleva la cuenta de cuáles han sido añadidas a la base de datos actual).
+
+
+

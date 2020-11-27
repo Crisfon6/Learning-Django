@@ -1,0 +1,13 @@
+<h1>detail User</h1>
+
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{% comment %} <h1>{{name}}</h1>
+<h2>{% if description %}{{description}}{% else %}{{number}}{% endif %}</h2> {% endcomment %}
+<h1>{{object.name}}</h1>
+<h2>{% if object.description %}{{object.description}}{% else %}{{object.number}}{% endif %}</h2>
+{% endblock content %}

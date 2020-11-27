@@ -1,0 +1,20 @@
+verificamos que este instalado python 
+intalamos django  : pip install django
+creamos el directorio donde queremos hacer el proyecto
+instalamos vituarenv : pip install virtualenv
+ponemos ocmo entorno virtual la carpeta del proyecto : virtualenv nombreproject
+vamos a scripts y ejecutamos activate
+con pip freeze podemos ver los paquetes intalados
+instalamos django : pip django
+creamos carpeta donde ira todo el code
+creamos los archivos para tener sitio en blank : django-admin startproject nombreproject .
+ejecutamos el server : python manage.py runserver
+
+
+
+tambien podemos agregar carpetas con los archivos necesarios para una conexion a una base de datos o para tener el view con: python manage.py startapp nombre
+ ejecuta toda la configuracion : python manage.py migrate
+busca los cambios en el manage.py: python manage.py makemigrations 
+
+
+
